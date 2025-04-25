@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.text())
     .then(data => {
       document.getElementById("mainblog").innerHTML = data;
-    })=
+    })
     .catch(error => {
       console.error("블로그 미리보기 로딩 실패:", error);
     });
