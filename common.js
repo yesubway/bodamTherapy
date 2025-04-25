@@ -37,3 +37,23 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("톡톡 버튼 로딩 실패:", error);
   });
 });
+
+// 햄버거 토글 함수
+function toggleLNB() {
+  const lnb = document.getElementById("lnb");
+  if (lnb.classList.contains("active")) {
+    lnb.classList.remove("active");
+  } else {
+    lnb.classList.add("active");
+  }
+  // 처음 hidden 상태일 경우 display 복원
+  if (lnb.classList.contains("hidden")) {
+    lnb.classList.remove("hidden");
+  }
+}
+
+// LNB 서브 메뉴 뎁스 토글 함수
+function toggleSubmenu(button) {
+  const submenu = button.nextElementSibling;
+  submenu.classList.toggle("active");
+}
