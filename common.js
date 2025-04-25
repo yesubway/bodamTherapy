@@ -1,14 +1,23 @@
 // common.js
 document.addEventListener("DOMContentLoaded", function () {
-  // nav.html 삽입 (div 안에)
+  // nav.html 삽입
   fetch("nav.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("navbar").innerHTML = data;
-    })
-    .catch(error => {
-      console.error("네비게이션 로딩 실패:", error);
+
+      const menuButton = document.querySelector(".menu-button");
+      if (menuButton) {
+        menuButton.addEventListener("click", toggleLNB);
+      }
+
+      document.querySelectorAll(".has-submenu > button").forEach(button => {
+        button.addEventListener("click", () => {
+          const submenu = button.nextElementSibling;
+          submenu.classList.toggle("active");
+      });
     });
+  });
 
   // blogpreview.html 삽입 후 blog.js 실행
   // preview 페이지 동적으로 로드
@@ -35,27 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   .catch(error => {
     console.error("톡톡 버튼 로딩 실패:", error);
-  });
-  
-  // nav.html 삽입
-  fetch("nav.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar").innerHTML = data;
-
-    // 버튼 클릭 이벤트 직접 연결
-    const menuButton = document.querySelector(".menu-button");
-    if (menuButton) {
-      menuButton.addEventListener("click", toggleLNB);
-    }
-
-    // 트리 메뉴도 이벤트 직접 연결
-    document.querySelectorAll(".has-submenu > button").forEach(button => {
-      button.addEventListener("click", () => {
-        const submenu = button.nextElementSibling;
-        submenu.classList.toggle("active");
-      });
-    });
   });
 });
 
