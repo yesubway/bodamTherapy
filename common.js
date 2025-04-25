@@ -29,12 +29,33 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // floating-buttons.html 삽입
   fetch("floatingbuttons.html")
-  .then(res => res.text())
-  .then(data => {
-    document.body.insertAdjacentHTML("beforeend", data);
+    .then(res => res.text())
+    .then(data => {
+      document.body.insertAdjacentHTML("beforeend", data);
   })
   .catch(error => {
     console.error("톡톡 버튼 로딩 실패:", error);
+  });
+  
+  // nav.html 삽입
+  fetch("nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+
+    // 버튼 클릭 이벤트 직접 연결
+    const menuButton = document.querySelector(".menu-button");
+    if (menuButton) {
+      menuButton.addEventListener("click", toggleLNB);
+    }
+
+    // 트리 메뉴도 이벤트 직접 연결
+    document.querySelectorAll(".has-submenu > button").forEach(button => {
+      button.addEventListener("click", () => {
+        const submenu = button.nextElementSibling;
+        submenu.classList.toggle("active");
+      });
+    });
   });
 });
 
