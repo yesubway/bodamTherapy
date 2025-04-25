@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("네비게이션 로딩 실패:", error);
     });
 
-  // blog.html 삽입 후 blog.js 실행
-  fetch("blog.html")
+  // blogpreview.html 삽입 후 blog.js 실행
+  // preview 페이지 동적으로 로드
+  fetch("blogpreview.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("mainblog").innerHTML = data;
