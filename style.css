@@ -1,0 +1,48 @@
+/* style.css */
+
+/* 기본 폰트 및 배경 */
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+/* 링크 스타일 */
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0066cc;
+}
+
+/* 네비게이션 공통 스타일 */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 네비게이션 전체 바 */
+.nav {
+  width: 100%;
+  background: #0066cc;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}=
+
+/* 중앙 정렬 + 최대 폭 제한 */
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* 중앙/오른쪽 메뉴 */
+.nav-center,
+.nav-right {
+  display: flex;
+  gap: 1.5rem;
+}
