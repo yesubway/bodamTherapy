@@ -3,9 +3,12 @@
 body {
   font-family: 'Noto Sans', sans-serif;  /* 기존 sans-serif → Noto Sans */
   margin: 0;
-  padding: 1.5rem 2rem 3rem;
   background: #f9f9f9;
   color: #333;
+}
+
+.content {
+  padding: 1.5rem 2rem 3rem;
 }
 
 /* 링크 스타일 */
