@@ -3,12 +3,35 @@
   <!-- 햄버거 버튼 (왼쪽 고정) -->
   <button class="menu-button" onclick="toggleLNB()">≡</button>
 
-  <!-- 스크롤 가능한 상위 메뉴 -->
+  <!-- 스크롤 가능한 상위 메뉴 네비바 -->
   <div class="scroll-menu">
     <a href="index.html">홈</a>
-    <a href="#">소개</a>
-    <a href="blog.html">블로그</a>
+    <a href="#">센터소개</a>
+    <a href="#">온라인상담</a>
     <a href="#">프로그램</a>
+    <a href="blog.html">블로그</a>
     <a href="#">오시는길</a>
   </div>
 </nav>
+
+<!-- LNB 트리 메뉴 삽입 -->
+<aside id="lnb" class="lnb hidden">
+  <ul>
+    <li><a href="index.html">홈</a></li>
+    <li><a href="#">센터소개</a></li>
+    <li><a href="#">온라인상담</a></li>
+    <li class="has-submenu">
+      <button onclick="toggleSubmenu(this)">프로그램</button>
+      <ul class="submenu">
+        <li><a href="#">교사/부모교육</a></li>
+        <li><a href="#">아동상담</a></li>
+        <li><a href="#">청소년상담</a></li>
+        <li><a href="#">부모상담</a></li>
+        <li><a href="#">기관회원</a></li>
+        <li><a href="#">심리상담</a></li>
+      </ul>
+    </li>
+    <li><a href="blog.html">블로그</a></li>
+    <li><a href="#">오시는길</a></li>
+  </ul>
+</aside>
