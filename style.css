@@ -1,10 +1,11 @@
-=/* style.css */
-
+/* style.css */
 /* 기본 폰트 및 배경 */
 body {
-  font-family: sans-serif;
-  padding: 2rem;
+  font-family: 'Noto Sans', sans-serif;  /* 기존 sans-serif → Noto Sans */
+  margin: 0;
+  padding: 0;
   background: #f9f9f9;
+  color: #333;
 }
 
 /* 링크 스타일 */
@@ -90,20 +91,33 @@ a {
   margin: 0.5rem 0;
 }
 
-/* 공통 폰트 적용 */
-body {
-  font-family: 'Noto Sans', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #333;
+.lnb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.lnb.active {
+  transform: translateX(0);
+}
+
+.hidden {
+  display: none;
 }
 
 /* 블로그 미리보기 리스트의 점 제거 */
 ul#rss-feed {
   list-style: none;
   padding-left: 0;
-  margin: 0
+  margin: 0;
 }
 
 /* 톡톡 버튼 */
