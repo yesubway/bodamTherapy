@@ -35,6 +35,8 @@ a {
   font-size: 1.8rem;
   cursor: pointer;
   flex: 0 0 auto;
+  z-index: 1100; /* LNB보다 위 */
+  position: relative; /* 혹은 fixed로 상단에 고정할 수도 있음 */
 }
 
 /* 스크롤 메뉴 */
