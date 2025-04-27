@@ -9,16 +9,35 @@ fetch(proxyUrl)
     const parser = new DOMParser();
     const xml = parser.parseFromString(data.contents, "text/xml");
     const items = xml.querySelectorAll("item");
-    const feedContainer = document.getElementById("rss-feed");
+    const feedContainer = document.getElementById("feed-list");
 
     items.forEach((item, index) => {
-      if (index >= 5) return; // 최대 5개까지만 표시
-      const title = item.querySelector("title").textContent;
-      const link = item.querySelector("link").textContent;
-      const pubDate = item.querySelector("pubDate").textContent;
+      if (index >= 15) return; // 최대 15개까지만 표시
 
+      const title = item.querySelector("title")?.textContent || '';
+      const link = item.querySelector("link")?.textContent || '';
+      const pubDate = item.querySelector("pubDate")?.textContent || '';
+      const description = item.querySelector("description")?.textContent || ''; // 미리보기용
+
+      // 날짜 포맷 정리
+      const formattedDate = formatDate(pubDate);
+
+      // 미리보기 내용 20자 제한
+      const preview = description.replace(/(<([^>]+)>)/gi, "").slice(0, 50) + '...';
+
+      // li 생성
       const li = document.createElement("li");
-      li.innerHTML = `<a href="${link}" target="_blank">${title}</a><small>${pubDate}</small>`;
+      li.className = "feed-item";
+      li.innerHTML = `
+        <a href="${link}" target="_blank" class="card">
+          <div class="preview">${preview}</div>
+          <div class="card-footer">
+            <div class="title">${title}</div>
+            <div class="date">${formattedDate}</div>
+          </div>
+        </a>
+      `;
+
       feedContainer.appendChild(li);
     });
   })
@@ -29,3 +48,16 @@ fetch(proxyUrl)
     }
     console.error("RSS 불러오기 실패:", error);
   });
+
+// pubDate 포맷 변환 함수
+function formatDate(pubDateStr) {
+  const date = new Date(pubDateStr);
+
+  if (isNaN(date)) return ''; // 변환 실패 시 빈 문자열
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}.${month}.${day}`; // 원하는 yyyy.MM.dd 형식
+}
