@@ -296,3 +296,9 @@ a {
 .footer-inner p {
   margin: 0.5rem 0;
 }
+
+.footer-link {
+  display: flex;
+  justify-content: flex-end; /* 우측 정렬 핵심 */
+  gap: 1rem;
+}
