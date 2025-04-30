@@ -33,13 +33,15 @@ body {
 
 .hero img {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 100;
+  padding: 0 0 10px 0;
 }
 
 .hero p {
