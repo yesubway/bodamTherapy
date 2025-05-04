@@ -14,6 +14,12 @@ body {
   color: #333;
 }
 
+/* 버튼에 폰트 적용 */
+button {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
 .content {
   padding: 1.5rem 2rem 3rem;
 }
