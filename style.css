@@ -126,20 +126,21 @@ a {
 
 /* 네비게이션 메뉴 재구성 */
 .nav {
+  width: 100%;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
   padding: 1rem;
-  overflow-x: auto;
   white-space: nowrap;
   gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* 햄버거 버튼 */
 .menu-button {
-  position: relative; /* 혹은 fixed로 상단에 고정할 수도 있음 */
-  z-index: 1100; /* LNB보다 위 */
+  position: relative;
+  z-index: 1100;
   background-color: #ffffff;
   border: 2px solid #092c1e;
   color: #092c1e;
@@ -158,14 +159,7 @@ a {
 .scroll-menu {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   flex: 1;
-}
-
-.scroll-menu::-webkit-scrollbar {
-  display: none;
 }
 
 .scroll-menu a {
@@ -173,6 +167,40 @@ a {
   text-decoration: none;
   font-weight: 500;
   padding: 0.3rem 0.5rem;
+}
+
+/* 서브 네비게이션: 상위 메뉴 감싸는 div */
+.menu-item {
+  position: relative;
+}
+
+/* 서브 네비게이션: 숨겨진 하위 메뉴 */
+.menu-item.has-subnav .sub-nav {
+  display: none;
+  background-color: white;
+  border: 1px solid #ddd;
+  margin-top: 0.5rem;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 서브 네비게이션: 열릴 때 */
+.menu-item.has-subnav.active .sub-nav {
+  display: block;
+}
+
+/* 서브 네비게이션: 하위 링크 스타일 */
+.menu-item.has-subnav .sub-nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #092c1e;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* 서브 네비게이션: 하위 링크 hover 효과 */
+.menu-item.has-subnav .sub-nav a:hover {
+  background-color: #f0f0f0;
 }
 
 /* 트리 메뉴 */
