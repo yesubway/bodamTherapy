@@ -1,6 +1,6 @@
 // blog.js
 // 메인 페이지에서 블로그 미리보기 list 받아오기 위해 분리
-const rssUrl = "https://rss.blog.naver.com/memo201.xml";
+const rssUrl = "https://rss.blog.naver.com/soeun3744.xml";
 const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
 
 fetch(proxyUrl)
