@@ -23,20 +23,23 @@ fetch(proxyUrl)
       const formattedDate = formatDate(pubDate);
 
       // 미리보기 내용 20자 제한
-      const preview = description.replace(/(<([^>]+)>)/gi, "").slice(0, 50) + '...';
+      const preview = description.replace(/(<([^>]+)>)/gi, "").slice(0, 100) + '...';
 
       // li 생성
       const li = document.createElement("li");
       li.className = "feed-item";
       li.innerHTML = `
-        <a href="${link}" target="_blank" class="card">
-          <div class="preview">${preview}</div>
-          <div class="card-footer">
-            <div class="title">${title}</div>
-            <div class="date">${formattedDate}</div>
-          </div>
-        </a>
+        <div class="blog-card">
+          <h3>${title}</h3>
+          <p>${preview}</p>
+        </div>
+        <p class="blog-meta">네이버 블로그 ${formattedDate}</p>
       `;
+
+      // 클릭 이벤트: 링크로 이동
+      li.addEventListener("click", () => {
+        window.open(link, "_blank");
+      });
 
       feedContainer.appendChild(li);
     });

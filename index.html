@@ -53,21 +53,47 @@
       <section class="intro-title">
         <h2>오시는길</h2>
       </section>
-      <div class="map-wrapper">
-        <iframe
-          src="https://map.naver.com/v5/entry/place/1044582741?c=18.87,0,0,0,dh"
-          width="60%"
-          height="400"
-          frameborder="0"
-          style="border:0;"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-      <div class="map-description">
-        <p>동은아동청소년상담센터</p>
-        <h2>서울시 강동구 양재대로 1539 프라임빌딩 313호</h2>
-      </div>
+      <!-- 지도 영역 -->
+      <div id="map" style="width:100%; height:400px;"></div>
+      <!-- 하단 정보 영역 -->
+      <section class="intro-title">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+            <div>
+              <p>동은아동청소년상담센터</p>
+              <h1 style="margin: 0.2rem 0; color: #bed465;">서울시 강동구 양재대로 1539 프라임빌딩 313호</h1>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="https://map.kakao.com/?q=동은심리상담교육센터" target="_blank" class="map-btn">길찾기</a>
+              <a href="https://map.kakao.com/?q=동은심리상담교육센터" target="_blank" class="map-btn">지도에서 보기</a>
+            </div>
+          </div>
+          <div style="padding-bottom: 1.5rem; border-bottom: 1px solid lightgrey;"></div>
+          <div style="margin-top: 1rem; display: flex; align-items: center; gap: 5rem;">
+            <h3 style="font-size: 1rem; margin: 0;">전화번호</h3>
+            <p style="margin: 0;">02-477-4021</p>
+          </div>
+          <div style="padding-bottom: 1.5rem; border-bottom: 1px solid lightgrey;"></div>
+          <div style="margin-top: 1rem; display: flex; align-items: center; gap: 5rem;">
+            <h3 style="font-size: 1rem; margin: 0;">이용시간</h3>
+            <div>
+              <p style="margin: 0;">평일    10:00 - 19:00</p>
+              <p style="margin: 0;">토요일    10:00 - 15:00</p>
+              <p style="margin: 0; font-size: 0.9rem;">(전화 또는 메일로 상담 신청)</p>
+            </div>
+          </div>
+          <div style="padding-bottom: 1.5rem; border-bottom: 1px solid lightgrey;"></div>
+          <div style="margin-top: 1rem; display: flex; align-items: center; gap: 5rem;">
+            <h3 style="font-size: 1rem; margin: 0;">이용안내</h3>
+            <div style="line-height: 22px; display: flex; gap: 0.5rem;">
+              <img src="/image/free-icon-calendar-check-7955802.png" alt="예약" style="width: 40px; height: 40px;">
+              <img src="/image/free-icon-parking-5201653.png" alt="주차" style="width: 40px; height: 40px;">
+            </div>
+          </div>
+          
+        <div style="padding-bottom: 1.5rem;"></div>
+      </section>
+      
       <main id="mainblog">
         <!-- blog.html -->
       </main>
@@ -88,7 +114,42 @@
         </a>
       </div>
     </footer>
+
     <!-- 공통 스크립트 삽입 -->
     <script src="commonnav.js"></script>
     <script src="common.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c645a2365076edc71b6f8171329730f&libraries=services"></script>
+    <script>
+    kakao.maps.load(function() {
+      var lat = 37.54316921064646;
+      var lng = 127.14170145091704;
+      var latlng = new kakao.maps.LatLng(lat, lng);
+
+      // 지도 생성
+      var mapContainer = document.getElementById('map');
+      var mapOption = {
+        center: latlng,
+        level: 3
+      };
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+
+      // 마커 생성
+      var marker = new kakao.maps.Marker({
+        position: latlng
+      });
+      marker.setMap(map);
+
+      // 말풍선(인포윈도우) 생성
+      var iwContent = '<div style="padding:5px; font-size:14px;">동은심리상담교육센터<br><a href="https://place.map.kakao.com/112330485" target="_blank">카카오맵 보기</a></div>',
+          iwPosition = latlng;
+
+      var infowindow = new kakao.maps.InfoWindow({
+        position: iwPosition,
+        content: iwContent
+      });
+
+      // 마커 위에 인포윈도우 표시
+      infowindow.open(map, marker);
+    });
+    </script>
 </body>
